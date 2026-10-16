@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Pheasant Couch Productions</title>
+  <meta name="description" content="Pheasant Couch Productions is the game studio of Zakk M.G. Home of Pew Pew Pest Control.">
+  <link rel="canonical" href="https://pheasantcouch.com/">
+
+  <!-- What Discord, Steam, iMessage and X show when someone shares the link.
+       These have to be written out here (link previews don't read content.js). -->
+  <meta property="og:site_name" content="Pheasant Couch Productions">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pheasantcouch.com/">
+  <meta property="og:title" content="Pheasant Couch Productions">
+  <meta property="og:description" content="We take ridiculous ideas very seriously. Home of Pew Pew Pest Control.">
+  <meta property="og:image" content="https://pheasantcouch.com/assets/og/og-studio.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="The Pheasant Couch Productions logo: a pheasant lounging in a green armchair.">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <meta name="theme-color" content="#fbf8ef">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="assets/icons/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Organization","name":"Pheasant Couch Productions","url":"https://pheasantcouch.com/","logo":"https://pheasantcouch.com/assets/brand/download/pheasant-couch-logo.png","founder":{"@type":"Person","name":"Zakk M.G."}}
+  </script>
+
+  <!-- AdSense: if Google asks you to verify the site with a meta tag, paste it on the next line. -->
+</head>
+<body class="theme-paper" data-page="studio">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="assets/brand/mark-96.png" alt="" width="38" height="38"><b>Pheasant Couch</b></a>
+    <nav aria-label="Main">
+      <ul class="nav">
+        <li><a href="#games">Games</a></li>
+        <li><a href="#studio">Studio</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- The ident: the logo, the line, and "presents" -->
+  <section class="ident" aria-label="Pheasant Couch Productions">
+    <div class="wrap">
+      <h1><img class="ident-logo" src="assets/brand/logo.png" width="1000" height="1000" alt="Pheasant Couch Productions"></h1>
+      <p class="studio-tagline" id="studioTagline"></p>
+      <a class="presents" href="#games"><span class="line">presents</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- The featured game, in its own colors -->
+  <section class="feature band-night" id="games" aria-labelledby="featTitle">
+    <div class="wrap">
+      <div class="feature-copy">
+        <span class="tape tape-red">Now in production</span>
+        <h2 class="game-title" id="featTitle"><span>Pew Pew</span><span class="sub">Pest Control</span></h2>
+        <p class="feature-tagline" id="featTagline"></p>
+        <p class="feature-pitch" id="featPitch"></p>
+        <div class="actions" id="featActions"></div>
+        <div class="chips" id="featChips"></div>
+        <p class="status" id="featStatus"></p>
+      </div>
+      <figure class="shot-card" id="featShot">
+        <img id="featImg" src="assets/games/pew-pew-pest-control/screens/kitchen-floor.jpg" alt="" width="1280" height="720">
+        <figcaption><span class="tape" id="featCaption"></span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- More games: appears by itself once content.js lists a second game -->
+  <section class="section" id="more-games" aria-labelledby="moreH" hidden>
+    <div class="wrap">
+      <div class="sec-head"><div><span class="eyebrow">Games</span><h2 class="h2" id="moreH">More from the couch</h2></div></div>
+      <div class="games-grid" id="gamesGrid"></div>
+    </div>
+  </section>
+
+  <section class="section" id="studio" aria-labelledby="studioH">
+    <div class="wrap about-studio">
+      <div class="head"><span class="eyebrow">The studio</span><h2 class="h2" id="studioH">On the couch</h2></div>
+      <div class="about-copy" id="studioAbout"></div>
+      <aside class="credits" id="creditsCard" aria-label="Studio credits">
+        <h3>Studio credits</h3>
+        <ul id="credits"></ul>
+      </aside>
+    </div>
+  </section>
+
+  <aside class="ad-slot" data-slot="home" hidden>
+    <div class="wrap"><span class="ad-label">Advertisement</span><div class="ad-box"></div></div>
+  </aside>
+
+  <section class="section" id="news" aria-labelledby="newsH">
+    <div class="wrap">
+      <div class="sec-head"><div><span class="eyebrow">Dev log</span><h2 class="h2" id="newsH">News from the couch</h2></div></div>
+      <ul class="news" id="newsList"></ul>
+    </div>
+  </section>
+
+  <section class="contact band-ink" id="contact" aria-labelledby="contactH">
+    <div class="wrap">
+      <div class="contact-copy">
+        <span class="eyebrow">Contact</span>
+        <h2 class="h2" id="contactH">Get in touch</h2>
+        <p class="contact-note">Press, partnerships, bug reports, fan mail. It all lands in the same inbox.</p>
+        <p class="email-row"><a class="email-big" data-email-link href="#contact"></a><button class="btn btn-small" type="button" data-copy-email>Copy</button></p>
+        <div class="social" id="social"></div>
+      </div>
+      <div class="brand-kit">
+        <h3>Brand kit</h3>
+        <div class="kit-tiles">
+          <figure class="on-light"><img src="assets/brand/logo-480.png" alt="Logo for light backgrounds" width="480" height="480" loading="lazy"></figure>
+          <figure class="on-dark"><img src="assets/brand/logo-reversed-480.png" alt="Logo for dark backgrounds" width="480" height="480" loading="lazy"></figure>
+        </div>
+        <div class="downloads">
+          <a class="dl" href="assets/brand/download/pheasant-couch-logo.png" download>Logo <small>PNG, clear background</small></a>
+          <a class="dl" href="assets/brand/download/pheasant-couch-logo-for-dark.png" download>Logo for dark <small>PNG</small></a>
+          <a class="dl" href="assets/brand/download/pheasant-couch-logo-on-white.jpg" download>Logo on white <small>JPG</small></a>
+          <a class="dl" href="assets/brand/download/pheasant-couch-icon.png" download>Icon <small>PNG</small></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p id="copy">&copy; 2026 Zakk M.G. &middot; Pheasant Couch Productions</p>
+    <p id="footLine"></p>
+    <p><a href="privacy.html">Privacy</a> &middot; <a href="support.html">Support</a></p>
+  </div>
+</footer>
+
+<script src="content.js"></script>
+<script src="js/site.js"></script>
+</body>
+</html>

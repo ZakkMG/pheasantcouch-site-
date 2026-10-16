@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Pew Pew Pest Control | Pheasant Couch Productions</title>
+  <meta name="description" content="Pew Pew Pest Control: a first-person arcade shooter where the exterminator is two centimeters tall. By Pheasant Couch Productions.">
+  <link rel="canonical" href="https://pheasantcouch.com/pew-pew-pest-control">
+
+  <!-- Link previews (Discord, Steam, iMessage, X). Written out here because
+       link previews don't read content.js. -->
+  <meta property="og:site_name" content="Pheasant Couch Productions">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pheasantcouch.com/pew-pew-pest-control">
+  <meta property="og:title" content="Pew Pew Pest Control">
+  <meta property="og:description" content="You came to shrink one rat. It shrank you first. A first-person arcade shooter from Pheasant Couch Productions.">
+  <meta property="og:image" content="https://pheasantcouch.com/assets/og/og-pew-pew-pest-control.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Pew Pew Pest Control title art over the client's kitchen, seen from two centimeters tall.">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <meta name="theme-color" content="#130e0a">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="assets/icons/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"VideoGame","name":"Pew Pew Pest Control","url":"https://pheasantcouch.com/pew-pew-pest-control","genre":"First-person shooter","gamePlatform":["Windows","macOS","Linux","iOS","Android","Web browser"],"author":{"@type":"Person","name":"Zakk M.G."},"publisher":{"@type":"Organization","name":"Pheasant Couch Productions","url":"https://pheasantcouch.com/"}}
+  </script>
+</head>
+<!-- data-game must match this game's slug in content.js -->
+<body class="theme-night" data-page="game" data-game="pew-pew-pest-control">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html" title="Pheasant Couch Productions home"><img src="assets/brand/mark-96.png" alt="" width="38" height="38"><b>Pheasant Couch</b></a>
+    <nav aria-label="Game">
+      <ul class="nav">
+        <li><a href="#about">About</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#screens">Screens</a></li>
+        <li><a href="#soundtrack">Soundtrack</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#press">Press</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero" aria-labelledby="gameTitle">
+    <div class="hero-bg" id="heroBg" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="hero-main">
+        <span class="tape tape-red" id="kicker">Pheasant Couch Productions presents</span>
+        <h1 class="game-title" id="gameTitle"><span>Pew Pew</span><span class="sub">Pest Control</span></h1>
+        <p class="tagline" id="gameTagline"></p>
+        <p class="lede" id="gameLede"></p>
+        <div class="actions" id="gameActions"></div>
+        <div class="chips" id="gameChips"></div>
+        <p class="status" id="gameStatus"></p>
+      </div>
+      <aside class="ticket" id="ticket" aria-label="Work order">
+        <h2><span id="woNumber">Work order</span><span id="woRoom"></span></h2>
+        <dl id="woLines"></dl>
+        <span class="stamp" id="woStamp"></span>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section" id="about" aria-labelledby="aboutH">
+    <div class="wrap about-game">
+      <div class="head"><span class="tape">The job</span><h2 class="h2" id="aboutH">What it is</h2></div>
+      <div class="copy" id="gameAbout"></div>
+    </div>
+  </section>
+
+  <section class="section" id="features" aria-labelledby="featuresH">
+    <div class="wrap">
+      <div class="sec-head"><h2 class="h2" id="featuresH">What&rsquo;s in the kit</h2><span class="tape tape-yellow">Features</span></div>
+      <div class="cards" id="cards"></div>
+    </div>
+  </section>
+
+  <aside class="ad-slot" data-slot="game" hidden>
+    <div class="wrap"><span class="ad-label">Advertisement</span><div class="ad-box"></div></div>
+  </aside>
+
+  <section class="section" id="screens" aria-labelledby="screensH">
+    <div class="wrap">
+      <div class="sec-head"><h2 class="h2" id="screensH">Screens</h2><p class="sec-note">Click any shot to see it full size.</p></div>
+      <div class="shots" id="shots"></div>
+    </div>
+  </section>
+
+  <section class="section" id="soundtrack" aria-labelledby="stH">
+    <div class="wrap">
+      <div class="sec-head"><h2 class="h2" id="stH">Soundtrack</h2><span class="tape tape-blue">Original score</span></div>
+      <div class="sound">
+        <div class="sound-copy">
+          <h3 id="stArtist"></h3>
+          <p id="stBlurb"></p>
+          <div class="sound-more" id="stMore"></div>
+        </div>
+        <ol class="tracks" id="tracks"></ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="news" aria-labelledby="newsH">
+    <div class="wrap">
+      <div class="sec-head"><h2 class="h2" id="newsH">Dev log</h2><span class="tape tape-green">News</span></div>
+      <ul class="news" id="gameNews"></ul>
+    </div>
+  </section>
+
+  <section class="section" id="press" aria-labelledby="pressH">
+    <div class="wrap">
+      <div class="sec-head"><h2 class="h2" id="pressH">Press kit</h2><p class="sec-note">Fact sheet, logos and screenshots. Everything here is free to use in coverage of the game.</p></div>
+      <div class="press">
+        <dl class="facts" id="facts"></dl>
+        <div class="press-side">
+          <img class="logo-dark" src="assets/brand/logo-reversed-480.png" alt="Pheasant Couch Productions logo" width="480" height="480" loading="lazy">
+          <p class="contact-line"><b>Contact</b><a data-email-link href="#press"></a></p>
+          <div class="sound-more">
+            <a class="tape" href="assets/brand/download/pheasant-couch-logo-for-dark.png" download>Logo for dark</a>
+            <a class="tape" href="assets/brand/download/pheasant-couch-logo.png" download>Logo, clear background</a>
+            <a class="tape" href="assets/games/pew-pew-pest-control/screens/title-screen.jpg" download>Title screen</a>
+            <a class="tape" href="assets/games/pew-pew-pest-control/screens/kitchen-floor.jpg" download>Kitchen screenshot</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p id="copy">&copy; 2026 Zakk M.G. &middot; Pheasant Couch Productions</p>
+    <p id="footLine"></p>
+    <p><a href="index.html">Studio</a> &middot; <a href="privacy.html">Privacy</a> &middot; <a href="support.html">Support</a></p>
+  </div>
+</footer>
+
+<script src="content.js"></script>
+<script src="js/site.js"></script>
+</body>
+</html>

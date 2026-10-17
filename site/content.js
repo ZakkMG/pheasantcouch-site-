@@ -45,7 +45,7 @@ window.SITE = {
     /* "On the couch" section. One string per paragraph. */
     about: [
       "Pheasant Couch Productions is the game studio of Zakk M.G.",
-      "The house rule is simple: take a ridiculous premise and play it completely straight. Shrink the exterminator. Give the rat a wizard hat and a loaner wand. Then build it properly, with a real upgrade tree, real boss phases, a radio dispatcher with opinions, and an original soundtrack recorded in-house.",
+      "The house rule is simple: take a ridiculous premise and play it completely straight. Shrink the exterminator. Give the rat a wizard hat and a loaner wand. Then build it properly, with a real upgrade tree, real boss phases, a radio dispatcher with opinions, and an original soundtrack made in-house.",
       "The first release is Pew Pew Pest Control, headed for Steam, iOS and Android. More is warming up on the couch."
     ],
 
@@ -53,8 +53,7 @@ window.SITE = {
     credits: [
       ["Founder", "Zakk M.G."],
       ["First game", "Pew Pew Pest Control"],
-      ["House band", "Zakk M.G.’s Automaton Drafting Band"],
-      ["Guitars", "None"]
+      ["House band", "Zakk M.G.’s Automaton Drafting Band"]
     ],
 
     /* Social links for the Contact section. Remove the two slashes in
@@ -146,7 +145,7 @@ window.SITE = {
 
       soundtrack: {
         artist: "Zakk M.G.’s Automaton Drafting Band",
-        blurb: "Six original tracks, recorded for the game. Two of them have to be earned.",
+        blurb: "Six original tracks, made for the game. Two of them have to be earned.",
         /* "plays" says where each track turns up. Add a url if a track
            goes up on a store, and it gets a Listen button. */
         tracks: [
@@ -200,16 +199,21 @@ window.SITE = {
      ADS
      mode: "off"      no ads anywhere
            "house"    your own promos (below). No ad network, no tracking.
-           "adsense"  Google AdSense. Only after Google approves the site;
-                      README, "Ads", walks through it.
-     The privacy page switches its wording to match the mode you pick.
+           "adsense"  Google AdSense. An ad spot with no ad unit ID yet
+                      shows your own promo instead, so nothing sits empty
+                      while Google reviews the site.
+     The privacy page switches its wording to match. Turning AdSense off
+     later also means deleting the AdSense line at the top of each page
+     (README, "Ads").
      ================================================================= */
   ads: {
-    mode: "house",
+    mode: "adsense",
 
     adsense: {
-      client: "",                       /* from AdSense, like "ca-pub-1234567890123456" */
-      slots: { home: "", game: "" }     /* ad unit IDs, like "1234567890" */
+      client: "ca-pub-5125837010207079",
+      /* After Google approves the site, make two display ad units named
+         "home" and "game" and paste their ad unit IDs here, like "1234567890". */
+      slots: { home: "", game: "" }
     },
 
     /* Your own promos. One spot on the homepage, one on the game page.
@@ -223,6 +227,6 @@ window.SITE = {
 
   /* The small print at the bottom of every page. */
   footer: {
-    line: "Zakk M.G. is not Zakk Wylde, and nothing here involves guitars."
+    line: "Zakk M.G. is not Zakk Wylde."
   }
 };

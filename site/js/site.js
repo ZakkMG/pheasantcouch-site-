@@ -325,20 +325,39 @@
     var mode = A.mode || 'off';
     var client = String((A.adsense && A.adsense.client) || '').trim();
     var adsenseReady = /^ca-pub-\d{6,}$/.test(client);
-    /* "adsense" without a real client ID loads nothing, so it counts as "off". */
-    var effective = mode === 'adsense' ? (adsenseReady ? 'adsense' : 'off') : (mode === 'house' ? 'house' : 'off');
+    var house = A.house || {};
+    /* The AdSense code pasted into a page's <head> loads Google's script on its own. */
+    var adsenseTag = document.querySelector('script[src*="pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]');
 
-    /* The privacy page carries a version of its ad section for each mode. */
+    /* "adsense" without a real client ID loads nothing, so it counts as "off". */
+    var slotMode = mode === 'adsense' ? (adsenseReady ? 'adsense' : 'off') : (mode === 'house' ? 'house' : 'off');
+    /* The privacy page says whatever is true on the page: if Google's script is there, it gets Google's wording. */
+    var privacyMode = (adsenseTag || slotMode === 'adsense') ? 'adsense' : slotMode;
+    var housePromos = (slotMode === 'house' || slotMode === 'adsense') && Object.keys(house).some(function (k) { return house[k] && house[k].text && house[k].url; });
+
     document.querySelectorAll('[data-ads-mode]').forEach(function (n) {
-      n.hidden = n.getAttribute('data-ads-mode').split(/\s+/).indexOf(effective) === -1;
+      n.hidden = n.getAttribute('data-ads-mode').split(/\s+/).indexOf(privacyMode) === -1;
     });
+    document.querySelectorAll('[data-house-promos]').forEach(function (n) { n.hidden = !housePromos; });
+
+    function showHouse(s) {
+      var h = house[s.getAttribute('data-slot')];
+      if (!h || !h.text || !h.url) return;
+      var box = el('div', 'house-ad');
+      box.appendChild(el('p', null, h.text));
+      var cls = body.classList.contains('theme-night') ? 'tape big tape-yellow' : 'btn btn-olive';
+      box.appendChild(link(h.url, cls, arrow(h.button || 'Take a look', h.url)));
+      s.querySelector('.ad-box').appendChild(box);
+      s.querySelector('.ad-label').textContent = 'From the couch';
+      s.hidden = false;
+    }
 
     var slots = document.querySelectorAll('.ad-slot[data-slot]');
-    if (effective === 'adsense') {
+    if (slotMode === 'adsense') {
       var units = 0;
       slots.forEach(function (s) {
         var id = String(((A.adsense.slots || {})[s.getAttribute('data-slot')]) || '').trim();
-        if (!id) return;
+        if (!id) { showHouse(s); return; }   /* no ad unit yet: your own promo holds the spot */
         var ins = document.createElement('ins');
         ins.className = 'adsbygoogle';
         ins.style.display = 'block';
@@ -351,24 +370,16 @@
         s.hidden = false;
         units++;
       });
-      var sc = document.createElement('script');
-      sc.async = true;
-      sc.crossOrigin = 'anonymous';
-      sc.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + encodeURIComponent(client);
-      document.head.appendChild(sc);
+      if (!adsenseTag) {   /* only for a page that doesn't carry the AdSense code itself */
+        var sc = document.createElement('script');
+        sc.async = true;
+        sc.crossOrigin = 'anonymous';
+        sc.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + encodeURIComponent(client);
+        document.head.appendChild(sc);
+      }
       for (var i = 0; i < units; i++) (window.adsbygoogle = window.adsbygoogle || []).push({});
-    } else if (effective === 'house') {
-      slots.forEach(function (s) {
-        var h = (A.house || {})[s.getAttribute('data-slot')];
-        if (!h || !h.text || !h.url) return;
-        var box = el('div', 'house-ad');
-        box.appendChild(el('p', null, h.text));
-        var cls = body.classList.contains('theme-night') ? 'tape big tape-yellow' : 'btn btn-olive';
-        box.appendChild(link(h.url, cls, arrow(h.button || 'Take a look', h.url)));
-        s.querySelector('.ad-box').appendChild(box);
-        s.querySelector('.ad-label').textContent = 'From the couch';
-        s.hidden = false;
-      });
+    } else if (slotMode === 'house') {
+      slots.forEach(showHouse);
     }
   }
 

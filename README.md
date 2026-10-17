@@ -20,6 +20,7 @@ pheasantcouch-site/
     ├── 404.html                   shown for addresses that don't exist
     ├── css/style.css              colors and fonts at the top, layout below
     ├── js/site.js                 fills the pages in from content.js
+    ├── ads.txt                    tells ad buyers you're the real seller (AdSense)
     ├── favicon.ico, site.webmanifest, robots.txt, sitemap.xml, CNAME
     └── assets/
         ├── brand/                 logos at web sizes
@@ -239,41 +240,46 @@ most offer it free.
 
 ## Ads
 
-`content.js` → `ads.mode` picks one of three, and the privacy page rewrites its own
-ad section to match:
+**AdSense is set up** with publisher ID `ca-pub-5125837010207079`:
 
-- `"off"`: no ads.
-- `"house"` (the setting now): your own promos, one on the homepage and one on the
-  game page. Ordinary links, no ad network, no tracking, no consent banner needed.
-  The homepage one points at EMP on Beatport. The game-page one is ready for your
-  Steam wishlist link and stays hidden until it has one.
-- `"adsense"`: Google AdSense in the same two spots.
+- the AdSense code is at the top of every page, where Google looks during review,
+- `site/ads.txt` lists you as the seller for pheasantcouch.com,
+- `content.js` has `ads.mode` set to `"adsense"`, and the privacy page already
+  carries Google's required ad wording.
 
-### Turning on AdSense
+There are two ad spots, one on the homepage and one on the game page. Until a spot
+has an AdSense ad unit ID, it shows your own promo instead: the homepage one points
+at EMP on Beatport; the game-page one is ready for your Steam wishlist link and stays
+hidden until it has one.
+
+`ads.mode` can be:
+
+- `"adsense"` (now): Google ads in any spot that has an ad unit ID, your own promo
+  in any spot that doesn't.
+- `"house"`: only your own promos, with no ad network.
+- `"off"`: nothing.
+
+For `"house"` or `"off"`, also delete the AdSense script from the top of each page
+(`index.html`, `pew-pew-pest-control.html`, `privacy.html`, `support.html`,
+`404.html`). Otherwise Google's code keeps loading.
+
+### What's left
 
 1. **Eligibility.** Google needs the account holder to be 18 or older (younger
    applicants apply through a parent or guardian's account), the content to be
    your own, and the site to follow its program policies.
-2. Put the site live first, then sign up at adsense.google.com with
-   `pheasantcouch.com`.
-3. **Verify the site** with the ads.txt method: make a plain text file named
-   `ads.txt` in the `site` folder containing exactly this line, with your own
-   publisher number, then upload the site again:
-   ```
-   google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
-   ```
-   (If Google gives you a meta tag instead, paste it where the comment says in
-   `index.html`'s `<head>`.)
-4. Wait for approval. Brand-new sites with only a few pages are often turned down
+2. In AdSense, finish connecting `pheasantcouch.com` and **request review**. When
+   it asks how to verify, the AdSense code snippet and ads.txt are both already
+   live on the site.
+3. Wait for approval. Brand-new sites with only a few pages are often turned down
    for "low value content" the first time. A few months of dev-log posts helps.
-5. Once approved: **Ads → By ad unit → Display ads**. Make two, named "home" and
-   "game". Copy each one's `data-ad-slot` number.
-6. In `content.js`: `ads.adsense.client` = your `ca-pub-…` ID, the two slot
-   numbers into `slots.home` and `slots.game`, then `mode: "adsense"`.
-7. **Privacy & messaging** in AdSense: create and publish a **European regulations**
+4. Once approved: **Ads → By ad unit → Display ads**. Make two, named "home" and
+   "game". Copy each one's `data-ad-slot` number into `slots.home` and
+   `slots.game` in `content.js`.
+5. **Privacy & messaging** in AdSense: create and publish a **European regulations**
    message. Google requires a certified consent message for visitors from the EEA,
    the UK and Switzerland; without one, those visitors don't get personalized ads.
-8. Leave **Auto ads** off, so Google doesn't scatter extra ads across the pages.
+6. Leave **Auto ads** off, so Google doesn't scatter extra ads across the pages.
 
 **Honest expectations.** Display ads pay per thousand views, so at a small studio's
 traffic the money is pocket change for a long while, and Google only pays out once
@@ -309,7 +315,7 @@ These short addresses work on Cloudflare (Workers or Pages), GitHub Pages and
 - [ ] Store links filled in as each store page goes live
 - [ ] More screenshots: two are in, four to eight is a good gallery
 - [ ] Share pheasantcouch.com in a Discord DM to yourself and check the preview card
-- [ ] Ads: house promos are on; AdSense only after approval (see "Ads")
+- [ ] Ads: AdSense code is in; request review, then add the two ad unit IDs (see "Ads")
 
 **About the Play version 8 button.** It sends visitors to the free browser build.
 That's a great demo, but if you're selling the full game on Steam, think about
